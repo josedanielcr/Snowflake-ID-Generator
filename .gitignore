@@ -16,6 +16,12 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# rider
+# Rider
+.idea/
+*.sln.iml
+*.sln.idea/
+
 # Mono auto generated files
 mono_crash.*
 
