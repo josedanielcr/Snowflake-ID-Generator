@@ -23,7 +23,7 @@ public class WorkerValidatorTests
     public void GivenGreaterThanMaxWorkerLength_WhenValidatingWorker_ThrowsArgumentOutOfRangeException()
     {
         //Arrange
-        const int workerId = 1;
+        const int workerId = 2;
         const int workerLength = 1;
         
         //Act

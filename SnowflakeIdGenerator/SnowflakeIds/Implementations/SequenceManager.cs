@@ -4,11 +4,22 @@ using SnowflakeIds.Common;
 
 namespace SnowflakeIds.Implementations;
 
-public class SequenceManager(IOptions<Settings> options) : ISequenceManager
+public class SequenceManager(IOptions<Settings> options, ITimestampGenerator timestampGenerator) : ISequenceManager
 {
     private readonly Lock _lock = new();
     private long _lastTimestamp = -1;
     private int _seq = 0;
+    
+    public int GetSequence(ref long timestamp)
+    {
+        int sequence;
+        while ((sequence = Next(timestamp)) == -1)
+        {
+            Thread.Sleep(1);
+            timestamp = timestampGenerator.Generate();
+        }
+        return sequence;
+    }
     
     public int Next(long currentTimestamp)
     {
