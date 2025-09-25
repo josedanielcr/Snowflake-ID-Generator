@@ -4,33 +4,20 @@ using Moq;
 using SnowflakeIds.Abstractions;
 using SnowflakeIds.Common;
 using SnowflakeIds.Implementations;
+using SnowflakeIds.Tests.Shared.Fixtures;
 
 namespace SnowflakeIds.Tests.Implementations;
 
-public class TimestampGeneratorTests
+public class TimestampGeneratorTests(SnowflakeSutFixture fx) : IClassFixture<SnowflakeSutFixture> 
 {
     [Fact]
     public void GivenValidOptions_WhenGeneratingTimestamp_ThenReturnTimestamp()
     {
         //Arrange
-        const int startYear = 2025;
-        const int startMonth = 1;
-        const int startDay = 1;
-        const int timestampLength = 41;
-        var settings = new Settings
-        {
-            StartYear = startYear,
-            StartMonth = startMonth,
-            StartDay = startDay,
-            TimestampLength = timestampLength
-        };
-        var optionsMock = new Mock<IOptions<Settings>>();
-        optionsMock.Setup(o => o.Value).Returns(settings);
-        
-        var timestampGenerator = new TimestampGenerator(optionsMock.Object);
+        var (_, timestampManager, _, _) = fx.CreateAll();
         
         //Act
-        var timestamp = timestampGenerator.Generate();
+        var timestamp = timestampManager.Generate();
         
         //Assert
         timestamp.Should().BeGreaterThanOrEqualTo(0);
@@ -40,26 +27,12 @@ public class TimestampGeneratorTests
     public async Task GivenValidOptions_WhenGeneratingMultipleTimestamps_ThenTheyIncrease()
     {
         //Arrange
-        const int startYear = 2025;
-        const int startMonth = 1;
-        const int startDay = 1;
-        const int timestampLength = 41;
-        var settings = new Settings
-        {
-            StartYear = startYear,
-            StartMonth = startMonth,
-            StartDay = startDay,
-            TimestampLength = timestampLength
-        };
-        var optionsMock = new Mock<IOptions<Settings>>();
-        optionsMock.Setup(o => o.Value).Returns(settings);
-        
-        var timestampGenerator = new TimestampGenerator(optionsMock.Object);
+        var (_, timestampManager, _, _) = fx.CreateAll();
     
         //Act
-        var t1 = timestampGenerator.Generate();
+        var t1 = timestampManager.Generate();
         await Task.Delay(1); 
-        var t2 = timestampGenerator.Generate();
+        var t2 = timestampManager.Generate();
         
         //Assert
         t2.Should().BeGreaterThan(t1);
