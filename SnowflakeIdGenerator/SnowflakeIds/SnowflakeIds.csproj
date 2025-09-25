@@ -4,6 +4,14 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Snowflake ID Generator for .NET</Title>
+        <Authors>josedanielcr</Authors>
+        <Description>Provides a configurable Snowflake-style 64-bit ID generator with pluggable timestamp, sequence, and composition services plus DI-friendly registration helpers.</Description>
+        <Copyright>@2025 josedanielcr</Copyright>
+        <PackageProjectUrl>https://github.com/josedanielcr/Snowflake-ID-Generator</PackageProjectUrl>
+        <PackageTags>snowflake, id-generator, unique-ids, distributed, dotnet, dependency-injection</PackageTags>
+        <PackageReleaseNotes>Initial release of the Snowflake ID generator with DI registration helpers and configurable settings.</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
