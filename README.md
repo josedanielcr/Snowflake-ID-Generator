@@ -6,10 +6,10 @@ A lightweight Snowflake-style ID generator for .NET 9+. It provides small, testa
 
 ## Features
 
-- ✅ **Thread-safe orchestration** – `IdGenerator` coordinates timestamp, sequence, and composition services without leaking concurrency primitives to callers.
-- ⚙️ **Configurable bit layout** – tune timestamp, worker, and sequence bit lengths plus the epoch start date to match your scale needs.
-- 🧩 **Dependency-injection friendly** – call `services.AddSnowflakeIds(...)` and inject `IIdGenerator` anywhere in your application.
-- 🧪 **Well-tested** – granular unit tests cover every component and the full generation pipeline.
+-  **Thread-safe orchestration** – `IdGenerator` coordinates timestamp, sequence, and composition services without leaking concurrency primitives to callers.
+-  **Configurable bit layout** – tune timestamp, worker, and sequence bit lengths plus the epoch start date to match your scale needs.
+-  **Dependency-injection friendly** – call `services.AddSnowflakeIds(...)` and inject `IIdGenerator` anywhere in your application.
+-  **Well-tested** – granular unit tests cover every component and the full generation pipeline.
 
 ## Getting started
 
